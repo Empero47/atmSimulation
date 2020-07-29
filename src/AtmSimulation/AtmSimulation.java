@@ -1,5 +1,7 @@
 package AtmSimulation;
 
+import sun.awt.geom.AreaOp;
+
 public class AtmSimulation {
     private boolean userAuthenticated; // Whether user is Authenticated
     private int currentAccountNumber; // current user's account number
@@ -48,8 +50,49 @@ public class AtmSimulation {
         int accountNumber = keypad.GetInput();
         screen.displayMessage("\nPlease enter your pin");
         int pin = keypad.GetInput();
+
+        // Set userauthenticated to boolean value returned by database
+        userAuthenticated = bankDatabase.authenticateUser(accountNumber, pin);
+
+        // Check whether authentication succeeded
+        if (userAuthenticated) {
+            currentAccountNumber = accountNumber;
+        } else screen.displayMessageLine("\nInvalid account number or pin. Please try again");
     }
 
-    public void performTransaction() {}
+    public void performTransaction() {
+        Transaction currentTransaction = null;
+
+        boolean userExited = false;
+
+        // Loop while user has not chosen option to exit system
+        while (!userExited) {
+            // Show main menu and get user selection
+            int mainMenuSelection = displayMainMenu();
+
+            // Decide how to proceed based on user menu selection
+            switch (mainMenuSelection) {
+                // User chose to perform one of three transaction types
+                case BALANCE_INQUIRY:
+                case WITHDRAWAL:
+                case DEPOSIT:
+                    // Initialize as new object of chosen type
+                    currentTransaction = createTransaction(mainMenuSelection);
+                    currentTransaction.execute();
+                    break;
+                case EXIT:
+                    screen.displayMessageLine("\nExiting the system...");
+                    userExited = true;
+                    break;
+                default:
+                    screen.displayMessageLine("you did not enter a valid selection. Try again ");
+                    break;
+            }
+        }
+    }
+
+    private int displayMainMenu() {}
+
+    private Transaction createTransaction(int type) {}
 
 }
