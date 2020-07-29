@@ -91,8 +91,31 @@ public class AtmSimulation {
         }
     }
 
-    private int displayMainMenu() {}
+    private int displayMainMenu() {
+        screen.displayMessageLine("\nMain Menu: ");
+        screen.displayMessageLine("\n1 - View my balance");
+        screen.displayMessageLine("2 - Withdraw cash");
+        screen.displayMessageLine("3 - Deposit funds");
+        screen.displayMessageLine("4 - Exit\n ");
+        screen.displayMessageLine("Enter choice: ");
+        return keypad.GetInput();
+    }
 
-    private Transaction createTransaction(int type) {}
+    private Transaction createTransaction(int type) {
+        Transaction temp = null;
+
+        switch (type) {
+            case BALANCE_INQUIRY:
+                temp = new CheckBalance(currentAccountNumber, screen, bankDatabase);
+                break;
+            case WITHDRAWAL:
+                temp = new Withdrawal(currentAccountNumber, screen, bankDatabase, keypad, dispenser);
+                break;
+            case DEPOSIT:
+                temp = new Deposite(currentAccountNumber, screen, bankDatabase,keypad,depositeSlut);
+                break;
+        }
+        return temp;
+    }
 
 }
