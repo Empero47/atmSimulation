@@ -7,7 +7,7 @@ public class BankDatabase {
     // Constructor
     public BankDatabase() {
         accounts = new  Account[2];
-        accounts[0] = new Account(00712345, 12345, 1000.0, 1200.0);
+        accounts[0] = new Account(00712345, 1234, 1000.0, 1200.0);
         accounts[1] = new Account(12345678, 2468, 2200.0, 2200.0);
     }
 

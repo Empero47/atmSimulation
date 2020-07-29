@@ -54,7 +54,7 @@ public class Deposite extends Transaction {
         if (input == CANCELED) {
             return CANCELED;
         } else {
-            return (double) input / 100;
+            return (double) input;
         }
     }
 
