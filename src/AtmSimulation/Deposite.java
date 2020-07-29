@@ -17,7 +17,30 @@ public class Deposite extends Transaction {
 
     // Perform transaction
     public void execute() {
+        BankDatabase database = getDatabase();
+        Screen screen = getScreen();
 
+        amount = promptForDepositAmount();
+
+        // Check whether user entered a deposit amount or canceled
+        if (amount != CANCELED) {
+            screen.displayMessage("\nPlease insert a deposit envelop containing ");
+            screen.displayDollarAmount(amount);
+            screen.displayMessage(" ");
+
+            // Retrieve deposit envelop
+            boolean envelopReceived = depositeSlut.isEnvelopReceived();
+
+            // Check whether envelop was received
+            if (envelopReceived) {
+                screen.displayMessageLine("\n envelop received.... money deposited to your account");
+                database.credit(getAccountNumber(), amount);
+            } else {
+                screen.displayMessageLine("\nYou did not send an envelop. canceling transaction....");
+            }
+        } else {
+            screen.displayMessageLine("\n Canceling transaction");
+        }
     }
 
     public double promptForDepositAmount() {
