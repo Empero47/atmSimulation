@@ -1,9 +1,8 @@
 package AtmSimulation;
 
 public class Withdrawal extends Transaction {
-    private int amount;
-    private Keypad keypad;
-    private CashDispenser cashDispenser;
+    private final Keypad keypad;
+    private final CashDispenser cashDispenser;
 
     private final static int CANCELED = 6;
 
@@ -27,7 +26,7 @@ public class Withdrawal extends Transaction {
         // Loop until cash is dispensed or user cancels
         do {
             // Obtain the chosen withdrawal amount from the user
-            amount = displayMenuofAmounts();
+            int amount = displayMenuofAmounts();
 
             // Check whether the user choose to withdraw or cancel
             if (amount != CANCELED) {
@@ -60,7 +59,7 @@ public class Withdrawal extends Transaction {
         Screen screen = getScreen();
 
         // Array of amount to correspond to menu numbers
-        int amounts[] = {0, 20, 40, 100, 200};
+        int[] amounts = {0, 20, 40, 100, 200};
 
         // Loop while no valid choice have been made
         while (userChoice == 0) {

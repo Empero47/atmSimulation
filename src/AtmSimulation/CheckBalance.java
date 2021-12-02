@@ -2,8 +2,8 @@ package AtmSimulation;
 
 public class CheckBalance extends Transaction {
 
-    public CheckBalance(int UseraccountNumber, Screen atmScreen, BankDatabase database) {
-        super(UseraccountNumber, atmScreen, database);
+    public CheckBalance(int UserAccountNumber, Screen atmScreen, BankDatabase database) {
+        super(UserAccountNumber, atmScreen, database);
 
     }
     // performs the transaction

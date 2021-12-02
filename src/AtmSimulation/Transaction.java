@@ -1,9 +1,9 @@
 package AtmSimulation;
 
 public abstract class Transaction {
-    private int accountNumber;
-    private Screen screen;
-    private BankDatabase bankDatabase;
+    private final int accountNumber;
+    private final Screen screen;
+    private final BankDatabase bankDatabase;
 
     public Transaction(int UseraccountNumber, Screen atmScreen, BankDatabase database) {
         accountNumber = UseraccountNumber;

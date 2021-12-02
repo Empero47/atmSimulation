@@ -1,13 +1,15 @@
 package AtmSimulation;
 
+import java.util.Objects;
+
 public class BankDatabase {
     // Get array of the accounts
-    private Account accounts[];
+    private final Account[] accounts;
 
     // Constructor
     public BankDatabase() {
         accounts = new  Account[2];
-        accounts[0] = new Account(00712345, 1234, 1000.0, 1200.0);
+        accounts[0] = new Account(234725, 1234, 1000.0, 1200.0);
         accounts[1] = new Account(12345678, 2468, 2200.0, 2200.0);
     }
 
@@ -33,22 +35,22 @@ public class BankDatabase {
 
     // Return available balance of account with account number
     public double getAvailableBalance(int userAccountNumber) {
-        return getAccount(userAccountNumber).getAccountNumber();
+        return Objects.requireNonNull(getAccount(userAccountNumber)).getAccountNumber();
     }
 
     // Return total balance of account
     public double getTotalBalance(int userAccountNumber) {
-        return getAccount(userAccountNumber).getTotalBalance();
+        return Objects.requireNonNull(getAccount(userAccountNumber)).getTotalBalance();
     }
 
     // Credit an amount to account with specified account number
     public void credit(int userAccountNumber, double amount) {
-        getAccount(userAccountNumber).credit(amount);
+        Objects.requireNonNull(getAccount(userAccountNumber)).credit(amount);
     }
 
     // Debit an amount from account with specified account number
     public void debit(int userAccountNumber, double amount) {
-        getAccount(userAccountNumber).debit(amount);
+        Objects.requireNonNull(getAccount(userAccountNumber)).debit(amount);
     }
 
 }

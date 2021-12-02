@@ -3,7 +3,7 @@ package AtmSimulation;
 import java.util.Scanner;
 
 public class Keypad {
-    private Scanner input;
+    private final Scanner input;
 
     public Keypad() {
         input = new Scanner(System.in);

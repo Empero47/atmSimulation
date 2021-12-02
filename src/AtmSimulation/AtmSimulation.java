@@ -1,16 +1,16 @@
 package AtmSimulation;
 
-import sun.awt.geom.AreaOp;
+//import sun.awt.geom.AreaOp;
 
 public class AtmSimulation {
     private boolean userAuthenticated; // Whether user is Authenticated
     private int currentAccountNumber; // current user's account number
     // Create the objects of the other classes
-    private Screen screen; // ATM SCREEN
-    private Keypad keypad;
-    private CashDispenser dispenser; //Atm cash dispenser
-    private DepositeSlut depositeSlut;
-    private BankDatabase bankDatabase;
+    private final Screen screen; // ATM SCREEN
+    private final Keypad keypad;
+    private final CashDispenser dispenser; //Atm cash dispenser
+    private final DepositeSlut depositeSlut;
+    private final BankDatabase bankDatabase;
 
     // Constants corresponding to main menu options
     private static final int BALANCE_INQUIRY = 1;

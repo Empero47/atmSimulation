@@ -51,11 +51,7 @@ public class Deposite extends Transaction {
         int input = keypad.GetInput();
 
         // Check whether the user canceled or entered a valid amount
-        if (input == CANCELED) {
-            return CANCELED;
-        } else {
-            return (double) input;
-        }
+        return input;
     }
 
 }
