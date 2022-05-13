@@ -82,6 +82,7 @@ public class Withdrawal extends Transaction {
                 case 4:
                 case 5:
                     userChoice = amounts[input];// Save users choice
+                    break;
                 case CANCELED:
                     userChoice = CANCELED;
                     break;
